@@ -2,8 +2,9 @@
 <html lang="en">
 <?php
 require_once "./controller/loginController.php";
+require_once "./controller/usuarioController.php";
 require_once "./controller/loginAuthenticator.php";
-
+require_once "./controller/pedidoController.php";
 ?>
 
 <head>
@@ -53,20 +54,32 @@ require_once "./controller/loginAuthenticator.php";
         <div class="payment">
             <div class="option">
                 <h3 class="verde">Entrega</h3>
-                <h3>Retirar</h3>
+             
             </div>
 
             <div class="endereco">
                 <h3>Endereço de entrega:</h3>
-                <p>123 Rua das Flores Bairro da Alegria Cidade Feliz, Estado da Imaginação CEP: 12345-678 </p>
+                <?php
+$resultlist = loadAll();
+?>
+
+<?php foreach ($resultlist as $result) { 
+    echo "<p>{$result['endereco']}</p>";
+} ?>
+     
             </div>
 
             <div class="valores-container">
                 <h3>Valores</h3>
 
                 <div class="subtotal">
-                    <h4>Subtotal</h4>
-                    <h4>R$ 300,00</h4>
+                    <?php 
+                    $total = getSumOfTotal();
+                    echo " <h4>Subtotal</h4>
+                    <h4>R$ $total</h4>";
+
+                    ?>
+                   
                 </div>
 
                 <div class="taxa">
@@ -75,52 +88,55 @@ require_once "./controller/loginAuthenticator.php";
                 </div>
 
                 <div class="total">
-                    <h4>Total</h4>
-                    <h4>R$ 300,00</h4>
+                <?php 
+                    $total = getSumOfTotal();
+                    echo " <h4>Total</h4>
+                    <h4>R$ $total</h4>";
+
+                    ?>
                 </div>
             </div>
 
             <div class="pagamento">
                 <h3>Pagamento</h3>
+                <form action="./controller/pedidoController.php" method="post">
                 <div class="payment-options">
                     <p>Número do cartão</p>
-                    <input class="input" type="text" name="" id="" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <input class="input" type="text" name="" id="" placeholder="XXXX-XXXX-XXXX-XXXX" required>
                     <p>Nome</p>
-                    <input class="input" type="text" name="" id="" placeholder="Insira o nome do cartão">
+                    <input class="input" type="text" name="" id="" placeholder="Insira o nome do cartão" required>
                     <p>CVV/CVC</p>
-                    <input class="input" type="text" name="" id="" placeholder="***">
+                    <input class="input" type="text" name="" id="" placeholder="***" required>
 
-                    <input class="button" type="submit" value="Efeutar pagamento">
+                    <input class="button" name="pagar" type="submit" value="Efeutar pagamento">
 
                 </div>
+                </form>
             </div>
         </div>
 
         <div class="carrinho">
 
-            <div class="item">
-                <div class="text">
-                    <h1>Schweppes Tônica Lata</h1>
-                    <p>R$ 5,50</p>
-                </div>
+        <?php
+$resultList = loadCarrinho();
+foreach ($resultList as $data) {
+    echo "
+    <div class='item'>
+        <div class='text'>
+            <h1>{$data['nome']}</h1>
+            <p>R$ {$data['valor']}</p>
+        </div>
 
-                <div class="text">
-                    <p>Quantidade: 8</p>
-                    <p>Total: 39,90</p>
-                </div>
-            </div>
+        <div class='text'>
+            <p>Quantidade: {$data['quantidade']}</p>
+            <p>Total: {$data['total']}</p>
+        </div>
+    </div>";
+}
+?>
+    
 
-            <div class="item">
-                <div class="text">
-                    <h1>Schweppes Tônica Lata</h1>
-                    <p>R$ 5,50</p>
-                </div>
-
-                <div class="text">
-                    <p>Quantidade: 8</p>
-                    <p>Total: 39,90</p>
-                </div>
-            </div>
+        
 
         </div>
 

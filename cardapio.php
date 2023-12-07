@@ -146,7 +146,7 @@
             </div>
            <div class="price">
             <h4>A partir de R$ 5,00</h4>
-            <a href=""><img src="./img/cardapio/mais.svg" alt=""></a>
+            <a href="./controller/pedidoController.php?b=Sprite Lata"><img src="./img/cardapio/mais.svg" alt=""></a>
            </div> 
           </div>
         </div>
@@ -160,7 +160,7 @@
             </div>
            <div class="price">
             <h4>A partir de R$ 5,00</h4>
-            <a href="#"><img src="./img/cardapio/mais.svg" alt=""></a>
+            <a href="./controller/pedidoController.php?b=Schweppes Lata"><img src="./img/cardapio/mais.svg" alt=""></a>
            </div> 
           </div>
         </div>
@@ -174,7 +174,7 @@
             </div>
            <div class="price">
             <h4>A partir de R$ 5,00</h4>
-            <a href="#"><img src="./img/cardapio/mais.svg" alt="" ></a>
+            <a href="./controller/pedidoController.php?b=Coca-Cola Lata"><img src="./img/cardapio/mais.svg" alt="" ></a>
            </div> 
           </div>
         </div>
@@ -188,7 +188,7 @@
             </div>
            <div class="price">
             <h4>A partir de R$ 5,00</h4>
-            <a href="#"><img src="./img/cardapio/mais.svg" alt=""></a>
+            <a href="./controller/pedidoController.php?b=Fanta Uva Lata"><img src="./img/cardapio/mais.svg" alt=""></a>
            </div> 
           </div>
         </div>
@@ -203,7 +203,7 @@
             </div>
            <div class="price">
             <h4>A partir de R$ 5,00</h4>
-            <a href="#"><img src="./img/cardapio/mais.svg" alt=""></a>
+            <a href="./controller/pedidoController.php?b=Coca-Cola Zero Lata"><img src="./img/cardapio/mais.svg" alt=""></a>
            </div> 
           </div>
         </div>
@@ -212,7 +212,11 @@
       </div>
 
     </div>
-
+    <?php
+      if(isset($_REQUEST['cod'])){
+        echo'<script>alert("Adicionado ao carrinho com sucesso!");</script>';
+      }
+    ?>
     
 
 

@@ -4,11 +4,24 @@
 
 function loadId()
 {
+
     require_once "../model/usuarioModel.php";
     $usuario = new usuarioModel();
     $result = $usuario->getId();
     return $result;
 }
+
+function loadIduser()
+{
+    require_once "./model/usuarioModel.php";
+    $usuario = new usuarioModel();
+    $result = $usuario->getId();
+    return $result;
+}
+
+
+
+
 
 
 function loadNome()

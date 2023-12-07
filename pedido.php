@@ -81,7 +81,7 @@ verificaPizza();
         <div class="pizza-options">
             <p>Selecionar tamanho</p>
 
-            <form action="./controller/pedidoController.php" method="post">
+            <form id="myform" action="./controller/pedidoController.php" method="post">
                 <select name="tamanho" class="input">
                     <option value="Pequena">Pequena</option>
                     <option value="Média">Média</option>

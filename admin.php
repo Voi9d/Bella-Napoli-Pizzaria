@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php 
-  require_once "./controller/adminAuthenticator.php";
-  require_once "./controller/usuarioController.php";
+require_once "./controller/loginController.php";
+require_once "./controller/usuarioController.php";
+require_once "./controller/loginAuthenticator.php";
+
   ?>
   <head>
     <meta charset="UTF-8" />
@@ -39,40 +41,34 @@
     <div class="container">
       <div class="bloco">
         <h1>Vendas e lucros</h1>
-        <div class="item">
-          <div class="text">
-            <h1>Schweppes Tônica Lata</h1>
-            <p>R$ 5,50</p>
-          </div>
 
-          <div class="text">
-            <p>Quantidade: 8</p>
-            <p>Total: 39,90</p>
-          </div>
+
+
+        <?php
+
+require_once "./controller/pedidoController.php";
+
+$result = loadAdm();
+
+foreach ($result as $data) {
+    echo "
+    <div class='item'>
+        <div class='text'>
+            <h1>{$data['nome']}</h1>
+            <p>R$ {$data['valor']}</p>
         </div>
 
-        <div class="item">
-          <div class="text">
-            <h1>Água Mineral com Gás 500ml</h1>
-            <p>R$ 4,50</p>
-          </div>
-
-          <div class="text">
-            <p>Quantidade: 8</p>
-            <p>Total: 39,90</p>
-          </div>
+        <div class='text'>
+            <p>Quantidade: {$data['quantidade']}</p>
+            <p>Total: {$data['total']}</p>
         </div>
+    </div>
+    ";
+}
+?>
 
-        <div class="item">
-          <div class="text">
-            <h1>Pizza grande (Calabresa)</h1>
-            <p>R$ 90,50</p>
-          </div>
-
-          <div class="text">
-            <p>Quantidade: 8</p>
-            <p>Total: 500,90</p>
-          </div>
+  
+      
         </div>
       </div>
     </div>
